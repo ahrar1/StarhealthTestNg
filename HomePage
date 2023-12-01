@@ -1,0 +1,70 @@
+package com.star.qa.Pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
+
+import com.star.qa.Base.TestBaseStar;
+
+public class HomePageStar {
+	WebDriver driver;
+	@FindBy(xpath="//input[@id='name']")
+	WebElement name;
+	
+	@FindBy(xpath="//input[@id='phoneNumber']")
+	WebElement number;
+	
+	@FindBy(xpath="//input[@id='pinCode']")
+	WebElement code;
+	
+	@FindBy(xpath="//span[text()='View Policy']")
+	WebElement viewPolicy;
+	
+	
+    
+	@FindBy(xpath="//input[@class='network-group_text-pincode__XsHIZ w-full mb-16-xs']")
+	WebElement searchpincode;
+	
+	@FindBy(xpath="//*[@id=\"__next\"]/div/div/main/div/div[8]/div[1]/div[1]/div/div[2]/div[2]/div/div[1]/div/button")
+	WebElement search;
+	
+	//div[text()='Kalinga Institute of Medical Sciences']
+	
+	@FindBy(xpath="//div[text()='Kalinga Institute of Medical Sciences']")
+	WebElement kims;
+	
+	public HomePageStar(WebDriver driver) {
+		PageFactory.initElements(driver, this);
+	}
+	public void getQuote(String name1,String number1,String code1) {
+		name.clear();
+		name.sendKeys(name1);
+		
+		number.clear();
+		number.sendKeys(number1);
+		
+		code.clear();
+		code.sendKeys(code1);
+		
+	}
+	
+	public void policy() {
+		viewPolicy.click();
+		//TestBaseStar.driver.navigate().back();
+	}
+	public void bAck() {
+		TestBaseStar.driver.navigate().back();
+	}
+	public void searchHospital(String code1) {
+		searchpincode.clear();
+		searchpincode.sendKeys(code1);
+		
+		search.click();
+	   
+		//boolean hospital= Kims.isDisplayed();
+		//System.out.println(hospital);
+		
+	}
+	
+}
