@@ -1,0 +1,8 @@
+<suite name="Test1" verbose="1">
+	<test name="POMF FrameWork">
+	   <classes>
+		   <class name="com.star.qa.TestPages.HomePageTestStar"></class>
+		   
+	   </classes>
+	</test>
+</suite>
