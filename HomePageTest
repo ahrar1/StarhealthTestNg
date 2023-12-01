@@ -1,0 +1,39 @@
+package com.star.qa.TestPages;
+
+import java.io.IOException;
+
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+
+import com.star.qa.Base.TestBaseStar;
+import com.star.qa.Pages.HomePageStar;
+import com.star.qa.Utilites.XLS_DataProvider;
+
+public class HomePageTestStar extends TestBaseStar {
+	
+	HomePageStar hp;
+	@BeforeClass
+	public void OpenApp() {
+		openBrowser("Browser");
+		hp = new HomePageStar(driver);
+	}
+	
+	@Test(priority = '1', dataProvider = "testdata")
+	public void Booking1(String name1,String number1,String code1) throws InterruptedException{
+       hp.getQuote(name1, number1, code1);
+		hp.policy();
+		
+		hp.searchHospital(code1);
+	}
+
+	@DataProvider(name = "testdata")
+	public Object[][] datasupplier() throws IOException {
+
+		Object[][] input = XLS_DataProvider.getTestData("Sheet1");
+		return input;
+	}
+
+
+
+}
